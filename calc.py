@@ -1,4 +1,5 @@
 import sys
+import re
 
 def main():
     x = 0
@@ -7,7 +8,22 @@ def main():
         x = input("Digite um numero ou um operador(+|-|*|/). Digite '=' para fazer o calculo: ")
         if x!="=":
             entrada.append(x)
+    verify(entrada)
     getResult(entrada)
+
+def verify(entrada):
+    firstTest(entrada)
+
+def firstTest(entrada):
+    entrada = ''.join(entrada)
+    entrada += '='
+    pattern = re.compile("^[0-9]{2}[0-9+\-*\/]*=$")
+    m = pattern.match(entrada)
+    if m != None:
+        print("pegou")
+    else:
+        print("nao pegou")
+    sys.exit()
 
 def getResult(entrada):
     numbers = []
