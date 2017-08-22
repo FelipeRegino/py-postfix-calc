@@ -13,7 +13,7 @@ def main():
 
 def verify(entrada):
     firstTest(entrada)
-    #secondTest(entrada)
+    secondTest(entrada)
 
 def firstTest(entrada):
     entrada = ''.join(entrada)
@@ -22,7 +22,7 @@ def firstTest(entrada):
     m = pattern.match(entrada)
     if m == None:
         print ("Cadeia Inválida: insira caracteres válidos [números e +-*/")
-        sys.exit()
+        sys.exit(2)
 
 def secondTest(entrada):
     val = 0
@@ -33,13 +33,16 @@ def secondTest(entrada):
             val += 1
     if val != 1:
         print("Cadeia Inválida: Número de números e simbolos está errado")
-        sys.exit(2)
+        sys.exit(3)
 
 def getResult(entrada):
     numbers = []
 
     for item in entrada:
         if item == "*" or item == "+" or item == "-" or item == "/":
+            if len(numbers) < 2:
+                print("Cadeia Inválida: Posições inadequadas dos caracteres")
+                sys.exit(4)
             numbers[-2] = calc(item, numbers[-2], numbers[-1])
             numbers.remove(numbers[-1])
         else:
