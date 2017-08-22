@@ -1,3 +1,5 @@
+import sys
+
 def main():
     x = 0
     entrada = []
@@ -12,7 +14,7 @@ def getResult(entrada):
 
     for item in entrada:
         if item == "*" or item == "+" or item == "-" or item == "/":
-            numbers[-2] = calc(item, numbers[-1], numbers[-2])
+            numbers[-2] = calc(item, numbers[-2], numbers[-1])
             numbers.remove(numbers[-1])
         else:
             numbers.append(int(item))
@@ -26,6 +28,9 @@ def calc(operator, n1, n2):
     elif operator == "-":
         return n1-n2
     elif operator == "/":
+        if n2 == 0:
+            print ("Cadeia Inválida: Não é possível dividir por 0")
+            sys.exit(1)
         return n1/n2
 
 main()
