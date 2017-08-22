@@ -13,18 +13,16 @@ def main():
 
 def verify(entrada):
     firstTest(entrada)
-    secondTest(entrada)
+    #secondTest(entrada)
 
 def firstTest(entrada):
     entrada = ''.join(entrada)
     entrada += '='
     pattern = re.compile("^[0-9]{2}[0-9+\-*\/]*=$")
     m = pattern.match(entrada)
-    if m != None:
-        print("pegou")
-    else:
-        print("nao pegou")
-    sys.exit()
+    if m == None:
+        print ("Cadeia Inválida: insira caracteres válidos [números e +-*/")
+        sys.exit()
 
 def secondTest(entrada):
     val = 0
