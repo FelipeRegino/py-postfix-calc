@@ -13,6 +13,7 @@ def main():
 
 def verify(entrada):
     firstTest(entrada)
+    secondTest(entrada)
 
 def firstTest(entrada):
     entrada = ''.join(entrada)
@@ -24,6 +25,17 @@ def firstTest(entrada):
     else:
         print("nao pegou")
     sys.exit()
+
+def secondTest(entrada):
+    val = 0
+    for i in entrada:
+        if i in ['+','-','/','*']:
+            val -= 1
+        elif int(i) in range(9):
+            val += 1
+    if val != 1:
+        print("Cadeia Inválida: Número de números e simbolos está errado")
+        sys.exit(2)
 
 def getResult(entrada):
     numbers = []
